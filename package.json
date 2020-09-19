@@ -4,7 +4,7 @@
   "description": "Showcase how creepy Google is.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node scripts/start"
   },
   "author": "thesm",
   "license": "MIT",

@@ -1,8 +1,21 @@
 doctype html
 html
+  include ../includes/head
   body
-    h1 My Site
-    p Welcome to my super lame site.
-    p Welcome to my super lame site.
-    p Welcome to my super lame site.
-    p Welcome to my super lame site.
+    include ../includes/header
+    div.cols
+      div.col
+        div
+          label Advertisements targeted at
+          h2 you
+        div
+          include ../includes/gallery
+      div.col
+        div
+          label Advertisements targeted at
+          h2 a persona
+        div
+          include ../includes/gallery
+  script(src="/main.js")
+  script(src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async data-ad-client="ca-pub-1234567890123456")
+  script (adsbygoogle = window.adsbygoogle || []).push({})

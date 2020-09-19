@@ -1,0 +1,6 @@
+- const suffix = isDev ? ' - Dev' : '';
+head
+  title Ad Showcase#{suffix}
+  link(rel="stylesheet" href="/main.css")
+  if isDev
+    script(src="http://localhost:35729/livereload.js?snipver=1")
