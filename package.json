@@ -4,7 +4,8 @@
   "description": "Showcase how creepy Google is.",
   "main": "index.js",
   "scripts": {
-    "start": "node scripts/start"
+    "start": "node scripts/start",
+    "build": "node scripts/build"
   },
   "author": "thesm",
   "license": "MIT",
