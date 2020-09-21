@@ -50,7 +50,7 @@ jobs:
             git config user.name "circleci"
     - add_ssh_keys:
         fingerprints:
-        - 83:21:89:0d:e0:0d:dc:98:0e:2b:07:46:4b:dd:66:8f
+        - 80:ee:2f:68:8c:cd:93:74:a7:f5:f7:32:66:a9:12:b1
     - run:
         name: Deploy
         command: $(yarn global bin)/gh-pages --message 'Publishing [ci skip]' --dist public
