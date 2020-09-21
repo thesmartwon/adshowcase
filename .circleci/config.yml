@@ -1,0 +1,56 @@
+# https://circleci.com/blog/deploying-documentation-to-github-pages-with-continuous-integration/
+version: 2
+workflows:
+  version: 2
+  build:
+    jobs:
+    - docs-build
+    - docs-deploy:
+        filters:
+          branches:
+            only: master
+        requires:
+        - docs-build
+jobs:
+  docs-build:
+    docker:
+    - image: circleci/node:12
+    steps:
+    - checkout
+    - restore_cache:
+        keys:
+        - v1-dependencies-{{ checksum "package.json" }}
+    - run:
+        name: Conditional Install
+        command: if [ ! -d node_modules ]; then npm install; fi
+    - save_cache:
+        paths:
+        - node_modules
+        key: v1-dependencies-{{ checksum "package.json" }}
+    - run:
+        name: Build
+        command: npm run build
+    - persist_to_workspace:
+        root: .
+        paths: public
+  docs-deploy:
+    docker:
+    - image: circleci/node:12
+    steps:
+    - checkout
+    - attach_workspace:
+        at: .
+    - run:
+        command: ls public
+    - run:
+        name: Git config
+        command: |
+            yarn global add gh-pages@2.0.1
+            git config user.email "ci@thesmartwon.com"
+            git config user.name "circleci"
+    - add_ssh_keys:
+        fingerprints:
+        - 83:21:89:0d:e0:0d:dc:98:0e:2b:07:46:4b:dd:66:8f
+    - run:
+        name: Deploy
+        command: $(yarn global bin)/gh-pages --message 'Publishing [ci skip]' --dist public

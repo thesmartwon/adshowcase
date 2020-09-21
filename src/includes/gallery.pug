@@ -1,2 +1,10 @@
+//- https://codepen.io/ramenhog/pen/MpORPa
 div.gallery
-  ins.adsbygoogle(style="width:728px;height:90px" data-ad-client="ca-pub-1234567890123456" data-ad-slot="1234567890") hi
+  - var start = adnum;
+  - for (let i = start; i < start + 20; i++)
+    if (i < 20)
+      ins.adsbygoogle(id!='afscontainer' + i data-ad-client="ca-pub-9336662327523738" data-ad-slot="1234567890" data-ad-format="auto"
+     data-full-width-responsive="true") ad #{i}
+    else
+      div.adsbygoogle persona ad #{i}
+    - adnum++
